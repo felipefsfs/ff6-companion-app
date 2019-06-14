@@ -8,12 +8,9 @@ function App() {
   return (
     <div className="App container">
       <header className="App-header">
-        <p>
-          {"JSON.stringify(data)"}
-        </p>
         {xp()}
-      </header>
       <CharBox data={data}/>
+      </header>
     </div>
   );
 }
@@ -25,7 +22,7 @@ function xp(props) {
   return (
       <div className="card-reveal">
 <div className="chips">
-  <input className="custom-class" />
+  <input className="custom-class" type="number" />
 </div>
       </div>
   );
