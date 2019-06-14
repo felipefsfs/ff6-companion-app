@@ -1,27 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import data from "./data.json";
+import CharBox from "./components/CharBox";
 
+console.log(data);
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          {JSON.stringify(data)}
+          {"JSON.stringify(data)"}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {xp()}
       </header>
+      <CharBox data={data}/>
     </div>
   );
 }
 
 export default App;
+
+
+function xp(props) {
+  return (
+      <div className="card-reveal">
+<div className="chips">
+  <input className="custom-class" />
+</div>
+      </div>
+  );
+}
