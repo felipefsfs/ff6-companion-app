@@ -9,7 +9,6 @@ export default function CharForm(props) {
 function deadStatus(props) {
     return (
         <div className="card-action">
-            <a href="/#">{props.value}</a>
             <span className="switch right ">
                 <label>
                 Dead
@@ -29,13 +28,20 @@ function changeForm(props) {
             <form>
                 <div className="input-field">
                     <label htmlFor="character">Change?</label>
-                    <input type="text" id="character" onChange= {(e) => console.log(e.target.value)}/>
+                    <input type="text" id="character" className="autocomplete" onChange= {(e) => console.log(e.target.value)}/>
                 </div>
                 <div className="input-field">
-                    <label htmlFor="exp">Current Experience</label>
-                    <input type="text" id="exp" onChange= {(e) => console.log(e.target.value)}/>
+                    <label htmlFor="exp">XP</label>
+                    <input type="number" id="exp" onChange= {(e) => console.log(e.target.value)}/>
                 </div>
+                <button onSubmit={f}>Update</button>
             </form>
         </div>
     );
+}
+
+function f(e) {
+    e.preventDefault();
+    console.log(e.target.closest("card-reveal"));
+    e.target.closest("card-reveal").style.display = "none";
 }
