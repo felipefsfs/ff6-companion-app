@@ -40,6 +40,50 @@
     -->
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-     
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.chips');
+        var instances = M.Chips.init(
+          elems, 
+          {
+            placeholder: 'Enter the XP!',
+            secondaryPlaceholder: '+XP',
+            limit:5,
+            onChipAdd(_, new_chip) {
+              new_chip.children[0].style.display = "none";
+            },
+            onChipSelect(_, selected_chip) {
+              console.log(selected_chip.innerText);
+            }
+          });
+        var instance = M.Chips.getInstance(elems[0]);
+        
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.autocomplete');
+        var options ={
+          limit: 3,
+          data: {
+            "Terra": null,
+            "Locke": null,
+            "Celes": null,
+            "Edgar": null,
+            "Sabin": null,
+            "Cyan": null,
+            "Shadow": null,
+            "Gau": null,
+            "Setzer": null,
+            "Strago": null,
+            "Relm": null,
+            "Mog": null,
+            "Gogo": null,
+            "Umaro": null,
+          }
+        }
+        var instances = M.Autocomplete.init(elems, options);
+      });
+
+    </script>
+
   </body>
 </html>
