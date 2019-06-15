@@ -2,35 +2,21 @@ import React, { forwardRef, Fragment, useRef, useState, useEffect } from "react"
 
 export default forwardRef(CanvasImg);
 
-function CanvasImg(props, imgRef) {
+function CanvasImg(props, image_ref) {
   const [imgUrl, setImgUrl] = useState("");
   const canvas = useRef(null);
-  useEffect(addImage, []);
+  useEffect(props.callback(image_ref)(canvas)(setImgUrl), [imgUrl]);
 
-/*   const imgProps = { 
-    alt: "Canvas Image",
-    ...props
-  };
- */  
   const canvasStyle = {
     display: "none"
   };
 
   return (
     <Fragment>
-      <img alt="Canvas output" {...props} src={imgUrl} />
+      {imgUrl.length > 10 && <img alt="Canvas output" {...props} src={imgUrl} />}
       <canvas key={0} ref={canvas} width={38} height={38.5} style={canvasStyle}/>
     </Fragment>
   );
-  function addImage() {
-      const ctx = canvas.current.getContext('2d');
-      ctx.drawImage(imgRef.current, 0, 0);
-      setImgUrl(canvas.toDataURL());
-      imgRef.current.onload = () => {
-          ctx.drawImage(imgRef.current, 0, 0);
-          setImgUrl(canvas.toDataURL());
-      }
-  }
 }
 
 //avatar is x=38, y=38.5
