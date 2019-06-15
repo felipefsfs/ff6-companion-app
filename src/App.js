@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 import data from "./data.json";
 import CharBox from "./components/CharBox";
-
+//src="kitty.png" x={topLeftCornerX} y={topLeftCornerY} cropHeight={cropHeight} cropWidth={cropWidth}
 console.log(data);
 function App() {
   return (
     <div className="App container">
       <header className="App-header">
         {xp()}
-      <CharBox data={data}/>
+        <CharBox data={data}/>
       </header>
     </div>
   );

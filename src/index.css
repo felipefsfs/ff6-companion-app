@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.hidden {
+  display: none;
+}
+
 .chips:hover {
   cursor: pointer;
 }
