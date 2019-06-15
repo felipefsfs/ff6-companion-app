@@ -5,15 +5,16 @@ export default forwardRef(CanvasImg);
 function CanvasImg(props, image_ref) {
   const [imgUrl, setImgUrl] = useState("");
   const canvas = useRef(null);
-  useEffect(props.callback(image_ref)(canvas)(setImgUrl), [imgUrl]);
+  const {callback, ...imgProps} = props;
+  useEffect(callback(image_ref)(canvas)(setImgUrl), [imgUrl]);
 
   const canvasStyle = {
     display: "none"
   };
-
+  
   return (
     <Fragment>
-      {imgUrl.length > 10 && <img alt="Canvas output" {...props} src={imgUrl} />}
+      {imgUrl.length > 10 && <img alt="Canvas output" {...imgProps} src={imgUrl} />}
       <canvas key={0} ref={canvas} width={38} height={38.5} style={canvasStyle}/>
     </Fragment>
   );
