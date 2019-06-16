@@ -25,7 +25,13 @@ export default function CharForm({charState: [char, setChar],  setExp}) {
     function handleCharSubmit(event) {
         event.preventDefault();
         event.target.closest(".card-reveal").style.display = "none";
-        setChar(charRef.current.value);
-        setExp(xpRef.current.value);
+        if (!!charRef.current.value) {
+            setChar(charRef.current.value);
+            charRef.current.value = "";
+        }
+        if (!!xpRef.current.value) {
+            setExp(xpRef.current.value);
+            xpRef.current.value = "";
+        }
     }
 }
