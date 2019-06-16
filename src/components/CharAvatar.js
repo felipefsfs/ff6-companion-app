@@ -14,9 +14,9 @@ function CharAvatar(props, image_ref) {
   
   useEffect(() => console.log("reading the indexDB"), []);
   useEffect(() => {
-    if (alive) {
+    if (alive && store.ping) {
       setExp(exp + store.xp);
-    }
+    }// eslint-disable-next-line
   },[store.xp, store.ping]);
 
   const xy = (props.charData.image_xy[char] || [1, 4]).map((v,i) => v*(-38.5));
