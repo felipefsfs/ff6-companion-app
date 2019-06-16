@@ -24,6 +24,7 @@ export default function XPSavedProvider(props) {
   }
 
   function clearXP() {
+    console.log("CLEAR XP:", savedXPs);
     setSavedXPs([]);
   }
 }

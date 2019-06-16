@@ -11,7 +11,7 @@ export default function XPBox() {
   
   return (
     <div>
-      <XPSavedProvider>s
+      <XPSavedProvider>
         <XPChips />
         <form onSubmit={submit}>
           <div className="input-field"> 
@@ -28,13 +28,14 @@ export default function XPBox() {
   );
 
   function changeXP(event) {
-    setXP(event.target.value);
+    setXP(Number(event.target.value));
   }
 
   function submit(event) {
     console.log("Submit MAnual ", xp, " to ", store.xp, " and ", saved_store.savedXPs);
     event.preventDefault();
     if (xp === 0) {
+      console.log("to clear");
       saved_store.clearXP();
       setXP("");
     } else {

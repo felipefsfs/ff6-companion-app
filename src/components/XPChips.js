@@ -4,7 +4,7 @@ import {ActiveXPsContext, SavedXPsContext} from "../store/xp_context";
 export default function XPChips() {
   const active_store = useContext(ActiveXPsContext);
   const saved_store = useContext(SavedXPsContext);
-  console.log("XPChips");
+  console.log("XPChips", saved_store.savedXPs);
   const btnStyle = {
     margin: "2px 5px"
   }
