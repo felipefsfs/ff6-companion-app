@@ -1,32 +1,49 @@
-import React, { forwardRef} from "react";
+import React, { forwardRef, useState } from "react";
 import CharExp from "./CharExp";
 import CharForm from "./CharForm";
 import CanvasImg from "./CanvasImg";
 
 export default forwardRef(CharAvatar);
 function CharAvatar(props, image_ref) {
-    return (
-        <div className="card small col s6 m6 l3 hoverable">
-            <div className="card-image waves-effect waves-block waves-light">
-                <CanvasImg callback={addImage} alt={"TERRA"} className="activator" ref={image_ref}/>
-            </div>
-            <CharExp {...props}/>
-            <CharForm {...props}/>
-        </div>
-    );
-    function addImage(image) {
-        return function toCanvas(canvas) {
-            return function storeIn(setImgUrl) {
-                return function() { 
-                    const ctx = canvas.current.getContext('2d');
-                    ctx.drawImage(image.current, 0, 0);
-                    setImgUrl(canvas.current.toDataURL());
-                    image.current.onload = () => {
-                        ctx.drawImage(image.current, 0, -38.5);
-                        setImgUrl(canvas.current.toDataURL());
-                    }
-                }
-            }
+  const [char, setChar] = useState("TERRA");
+  const [exp, seExp] = useState(0);
+
+  const char_obj = create_char(char, exp, props.data);
+  const xy = (props.charData[char] || [1, 4]).map((v,i) => v*(-38 - (i*0.5)));
+  return (
+    <div className="card small col s6 m6 l3">
+      <div className="card-image waves-effect waves-block waves-light">
+        <CanvasImg callback={addCroppedImage(xy)} alt={char} className="activator" ref={image_ref}/>
+      </div>
+      <CharExp {...char_obj}/>
+      <CharForm {...char_obj} charState={[char, setChar]} expState={[exp, seExp]} />
+    </div>
+  );
+
+  function addCroppedImage(xy) {
+    return function fromSpecs(spec = {}) {
+      return function inner() {
+        const ctx = spec.canvas.current.getContext('2d');
+        ctx.drawImage(spec.image.current, ...xy);
+        spec.setImgUrl(spec.canvas.current.toDataURL());
+        spec.image.current.onload = () => {
+          ctx.drawImage(spec.image.current, ...xy);
+          spec.setImgUrl(spec.canvas.current.toDataURL());
         }
+      }
     }
+  }
+
+  function create_char(char_name, exp_value, base_data) {
+    const index = base_data.exp.findIndex(o => o.experience > exp_value);
+    const nextObj = base_data.exp[index];
+    const currObj = base_data.exp[index-1];
+    return {
+      value: char_name,
+      level: currObj.level,
+      thisExp: currObj.experience,
+      currExp: exp_value,
+      nextExp: nextObj.experience
+    }
+  }
 }

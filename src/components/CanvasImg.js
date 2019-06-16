@@ -6,7 +6,7 @@ function CanvasImg(props, image_ref) {
   const [imgUrl, setImgUrl] = useState("");
   const canvas = useRef(null);
   const {callback, ...imgProps} = props;
-  useEffect(callback(image_ref)(canvas)(setImgUrl), [imgUrl]);
+  useEffect(callback({image: image_ref, canvas, setImgUrl}), [imgUrl]);
 
   const canvasStyle = {
     display: "none"
