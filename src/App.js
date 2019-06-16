@@ -2,28 +2,22 @@ import React from 'react';
 import './App.css';
 import data from "./data.json";
 import CharBox from "./components/CharBox";
+import XPBox from "./components/XPBox";
+import XPProvider from "./providers/XPProvider";
 //src="kitty.png" x={topLeftCornerX} y={topLeftCornerY} cropHeight={cropHeight} cropWidth={cropWidth}
 console.log(data);
 function App() {
   return (
     <div className="App container">
-      <header className="App-header">
-        {xp()}
-        <CharBox data={data}/>
-      </header>
+      <XPProvider>
+        <header className="App-header">
+          <XPBox />
+          <CharBox data={data}/>
+        </header>
+      </XPProvider>
     </div>
   );
 }
 
 export default App;
 
-
-function xp(props) {
-  return (
-      <div className="card-reveal">
-<div className="chips">
-  <input className="custom-class" type="number" />
-</div>
-      </div>
-  );
-}
