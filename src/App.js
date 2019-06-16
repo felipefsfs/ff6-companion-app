@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App container">
       <XPProvider>
-        <header className="App-header">
+        <header className="App-header teal lighten-5">
           <XPBox />
           <CharBox data={data} charData={char_data} />
         </header>

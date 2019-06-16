@@ -11,18 +11,28 @@ function CharAvatar(props, image_ref) {
   const [char, setChar] = useState("Terra");
   const [exp, setExp] = useState(0);
   const [alive, setAlive] = useState(true);
-  console.log("CharAvatar", char, exp, alive)
+  
   useEffect(() => console.log("reading the indexDB"), []);
+  useEffect(() => {
+    if (alive) {
+      setExp(exp + store.xp);
+    }
+  },[store.xp, store.ping]);
 
-  const char_obj = create_char(char, exp, props.data);
-  console.log(char_obj);
   const xy = (props.charData.image_xy[char] || [1, 4]).map((v,i) => v*(-38.5));
   return (
     <div className="card small col s6 m6 l3">
       <div className="card-image waves-effect waves-block waves-light">
-        <CanvasImg callback={addCroppedImage(xy)} char={char} className="shadow activator" ref={image_ref}/>
+        <CanvasImg 
+          callback={addCroppedImage(xy)} 
+          char={char} 
+          className={"shadow" + (alive && " activator")}
+          ref={image_ref}/>
+          
       </div>
-      <CharExp {...char_obj}/>
+      <div className="card-content">
+        <CharExp data={props.data} char={char} exp={exp}/>
+      </div>
       <CharAlive aliveState={[alive, setAlive]} />
       <CharForm setExp={setExp}
         charState={[char, setChar]} />
@@ -40,19 +50,6 @@ function CharAvatar(props, image_ref) {
           spec.setImgUrl(spec.canvas.current.toDataURL());
         }
       }
-    }
-  }
-
-  function create_char(char_name, exp_value, base_data) {
-    const index = base_data.exp.findIndex(o => o.experience > exp_value);
-    const nextObj = base_data.exp[index];
-    const currObj = base_data.exp[index-1];
-    return {
-      value: char_name,
-      level: currObj.level,
-      thisExp: currObj.experience,
-      currExp: exp_value,
-      nextExp: nextObj.experience
     }
   }
 }
