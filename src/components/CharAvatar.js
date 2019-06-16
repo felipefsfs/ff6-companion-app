@@ -1,23 +1,31 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useContext, useEffect } from "react";
 import CharExp from "./CharExp";
 import CharForm from "./CharForm";
+import CharAlive from "./CharAlive";
 import CanvasImg from "./CanvasImg";
+import {ActiveXPsContext} from "../store/xp_context";
 
 export default forwardRef(CharAvatar);
 function CharAvatar(props, image_ref) {
+  const store = useContext(ActiveXPsContext);
   const [char, setChar] = useState("Terra");
-  const [exp, seExp] = useState(0);
+  const [exp, setExp] = useState(0);
+  const [alive, setAlive] = useState(true);
+  console.log("CharAvatar", char, exp, alive)
+  useEffect(() => console.log("reading the indexDB"), []);
 
   const char_obj = create_char(char, exp, props.data);
-  console.log(char, props.charData.image_xy, props.charData.image_xy[char]);
+  console.log(char_obj);
   const xy = (props.charData.image_xy[char] || [1, 4]).map((v,i) => v*(-38.5));
   return (
     <div className="card small col s6 m6 l3">
       <div className="card-image waves-effect waves-block waves-light">
-        <CanvasImg callback={addCroppedImage(xy)} alt={char} className="activator" ref={image_ref}/>
+        <CanvasImg callback={addCroppedImage(xy)} char={char} className="shadow activator" ref={image_ref}/>
       </div>
       <CharExp {...char_obj}/>
-      <CharForm {...char_obj} charState={[char, setChar]} expState={[exp, seExp]} />
+      <CharAlive aliveState={[alive, setAlive]} />
+      <CharForm setExp={setExp}
+        charState={[char, setChar]} />
     </div>
   );
 
