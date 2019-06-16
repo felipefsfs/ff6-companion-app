@@ -4,7 +4,7 @@ import {ActiveXPsContext, SavedXPsContext} from "../store/xp_context";
 export default function XPChips() {
   const active_store = useContext(ActiveXPsContext);
   const saved_store = useContext(SavedXPsContext);
-  console.log("XPChips", saved_store.savedXPs);
+  
   const btnStyle = {
     margin: "2px 5px"
   }
@@ -13,7 +13,8 @@ export default function XPChips() {
     <div> 
       {saved_store.savedXPs.map(sxp => {
         return (<button 
-            onclick={clickSaved}
+            key={sxp}
+            onClick={clickSaved}
             style={btnStyle}
             className={"btn-floating waves-effect blue waves-light " + (sxp===active_store.xp && "pulse")}
             name="action">

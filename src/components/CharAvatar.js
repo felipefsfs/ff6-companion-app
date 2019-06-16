@@ -6,7 +6,7 @@ import CanvasImg from "./CanvasImg";
 export default forwardRef(CharAvatar);
 function CharAvatar(props, image_ref) {
     return (
-        <div className="card medium col s6 m6 l3 hoverable">
+        <div className="card small col s6 m6 l3 hoverable">
             <div className="card-image waves-effect waves-block waves-light">
                 <CanvasImg callback={addImage} alt={"TERRA"} className="activator" ref={image_ref}/>
             </div>

@@ -8,5 +8,6 @@ export const SavedXPsContext = createContext({
 
 export const ActiveXPsContext = createContext({
     xp: 0,
+    ping: 0,
     changeXP() {}
 });
