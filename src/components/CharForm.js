@@ -1,47 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
 
-export default function CharForm(props) {
-    return ([
-        deadStatus(props),
-        changeForm(props)
-    ]);
-}
-function deadStatus(props) {
-    return (
-        <div key={"deadStatus"} className="card-action">
-            <span className="switch right ">
-                <label>
-                Dead
-                <input type="checkbox" />
-                <span className="lever"></span>
-                Alive
-                </label>
-            </span>
-        </div>
-    );
-}
+export default function CharForm({charState: [char, setChar],  setExp}) {
+    const charRef = useRef(null);
+    const xpRef = useRef(null);
 
-function changeForm(props) {
-    return (
-        <div key={"changeForm"} className="card-reveal">
-            <span className="card-title grey-text text-darken-4">{props.value}<i className="material-icons right">close</i></span>
-            <form>
-                <div className="input-field">
-                    <label htmlFor="character">Change?</label>
-                    <input type="text" id="character" className="autocomplete" onChange= {(e) => console.log(e.target.value)}/>
-                </div>
-                <div className="input-field">
-                    <label htmlFor="exp">XP</label>
-                    <input type="number" id="exp" onChange= {(e) => console.log(e.target.value)}/>
-                </div>
-                <button onSubmit={f}>Update</button>
-            </form>
-        </div>
-    );
-}
+    return (        
+    <div className="card-reveal">
+        <span className="card-title grey-text text-darken-4">{char}<i className="material-icons right">close</i></span>
+        <form onSubmit={handleCharSubmit}>
+            <div className="input-field">
+                <label htmlFor="character">Change?</label>
+                <input ref={charRef} type="text" id="character" className="autocomplete" />
+            </div>
+            <div className="input-field">
+                <label htmlFor="exp">XP</label>
+                <input ref={xpRef} type="number" id="exp" />
+            </div>
+            <button class="btn btn-small cyan waves-effect waves-light" type="submit" name="action">Update
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>);
 
-function f(e) {
-    e.preventDefault();
-    console.log(e.target.closest("card-reveal"));
-    e.target.closest("card-reveal").style.display = "none";
+    function handleCharSubmit(event) {
+        event.preventDefault();
+        event.target.closest(".card-reveal").style.display = "none";
+        setChar(charRef.current.value);
+        setExp(xpRef.current.value);
+    }
 }
