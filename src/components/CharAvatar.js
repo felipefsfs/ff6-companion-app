@@ -5,11 +5,12 @@ import CanvasImg from "./CanvasImg";
 
 export default forwardRef(CharAvatar);
 function CharAvatar(props, image_ref) {
-  const [char, setChar] = useState("TERRA");
+  const [char, setChar] = useState("Terra");
   const [exp, seExp] = useState(0);
 
   const char_obj = create_char(char, exp, props.data);
-  const xy = (props.charData[char] || [1, 4]).map((v,i) => v*(-38 - (i*0.5)));
+  console.log(char, props.charData.image_xy, props.charData.image_xy[char]);
+  const xy = (props.charData.image_xy[char] || [1, 4]).map((v,i) => v*(-38.5));
   return (
     <div className="card small col s6 m6 l3">
       <div className="card-image waves-effect waves-block waves-light">
