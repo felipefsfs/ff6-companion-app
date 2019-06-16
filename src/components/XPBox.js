@@ -6,13 +6,14 @@ import {ActiveXPsContext, SavedXPsContext} from "../store/xp_context";
 export default function XPBox() {
   const store = useContext(ActiveXPsContext);
   const saved_store = useContext(SavedXPsContext);
-  const [xp, setXP] = useState(undefined);
+  const [xp, setXP] = useState("");
+  console.log("XPBOX", xp);
   
   return (
     <div>
-      <XPSavedProvider>
+      <XPSavedProvider>s
         <XPChips />
-        <form  onSubmit={submit}>
+        <form onSubmit={submit}>
           <div className="input-field"> 
             <i className="material-icons prefix">videogame_asset</i>
             <input id="xp" type="number" className="validate" value={xp} onChange={changeXP} />
@@ -31,14 +32,19 @@ export default function XPBox() {
   }
 
   function submit(event) {
+    console.log("Submit MAnual ", xp, " to ", store.xp, " and ", saved_store.savedXPs);
     event.preventDefault();
     if (xp === 0) {
       saved_store.clearXP();
       setXP("");
     } else {
+      console.log(xp);
       store.changeXP(xp);
+      console.log(xp);
       saved_store.addXP(xp);
+      console.log(xp);
       setXP("");
+      console.log(xp);
     }
   }
 }
