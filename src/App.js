@@ -16,6 +16,7 @@ function App() {
           <CharBox data={data} charData={char_data} />
         </header>
       </XPProvider>
+
     </div>
   );
 }
