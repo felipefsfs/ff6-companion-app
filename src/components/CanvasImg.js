@@ -5,7 +5,7 @@ export default forwardRef(CanvasImg);
 function CanvasImg({char, ...props}, image_ref) {
   const [imgUrl, setImgUrl] = useState("");
   const canvas = useRef(null);
-  const {callback, ...imgProps} = props;
+  const {callback, modalId, ...imgProps} = props;
   useEffect(callback({image: image_ref, canvas, setImgUrl}), [char]);
   console.log("CanvasImg",props);
   
@@ -15,7 +15,7 @@ function CanvasImg({char, ...props}, image_ref) {
   
   return (
     <Fragment>
-      {imgUrl.length > 10 && <img alt={char} {...imgProps} src={imgUrl} />}
+      {imgUrl.length > 10 && <img alt={char} {...imgProps} src={imgUrl}/>}
       <canvas ref={canvas} width={38} height={38.5} style={canvasStyle}/>
     </Fragment>
   );

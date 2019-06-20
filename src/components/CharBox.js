@@ -1,27 +1,26 @@
-import React, { useRef} from "react";
+import React, { Fragment, useRef} from "react";
+import CharAvatar from "./CharAvatar";
 import port from '../port.png'; 
+import './Char.css';
 
 export default function CharBox(props) {
   const image = useRef(null);
   const chars0 = [0,1,2,3];
   
+  const row_style = {"margin": "5vh 0px"};
+
   return (
-    <div className="row">
-      <img ref={image} alt="Chars Map" src={port} className="hidden" />
-      <picture className="mdiv col s6 m6 l3">
-        <img src="http://cdn.impressivewebs.com/2011-11/greece001.jpg" alt="" width="100%" />
-      </picture>
-      <picture className="mdiv col s6 m6 l3">
-        <img src="http://cdn.impressivewebs.com/2011-11/greece001.jpg" alt="" width="100%" />
-      </picture>
-      <picture className="mdiv col s6 m6 l3">
-        <img src="http://cdn.impressivewebs.com/2011-11/greece001.jpg" alt="" width="100%" />
-      </picture>
-      <picture className="mdiv col s6 m6 l3">
-        <img src="http://cdn.impressivewebs.com/2011-11/greece001.jpg" alt="" width="100%" />
-      </picture>
-    </div>
+    <Fragment>
+      <div class="divider"></div>
+      <div className="row" style={row_style}>
+        <img ref={image} alt="Chars Map" src={port} className="hidden" />
+        {charAvatarMap(chars0, image)}
+      </div>
+    </Fragment>
   );
   
+  function charAvatarMap(chars, ref) {
+    return chars.map((v) => (<CharAvatar ref={ref} {...props} key={v} id={v}/>));
+  }
 }
 

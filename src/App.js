@@ -9,14 +9,12 @@ import char_data from "./char_list_data.json";
 console.log(data);
 function App() {
   return (
-    <div className="App container">
+    <div className="App container teal lighten-5">
       <XPProvider>
-        <header className="App-header teal lighten-5">
-          <XPBox />
-          <CharBox data={data} charData={char_data} />
-        </header>
+        <XPBox />
+        <div class="divider"></div>
+        <CharBox data={data} charData={char_data} />
       </XPProvider>
-
     </div>
   );
 }

@@ -15,10 +15,3 @@ code {
 .hidden {
   display: none;
 }
-
-.card.tiny {
-  height: 150px;
-}
-.card.tiny {
-  position: relative;
-}

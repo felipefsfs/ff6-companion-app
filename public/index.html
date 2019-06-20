@@ -41,11 +41,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.autocomplete');
-        var options ={
-          limit: 3,
+        var instances = M.Autocomplete.init(elems, {
           data: {
             "Terra": null,
             "Locke": null,
@@ -60,12 +58,12 @@
             "Relm": null,
             "Mog": null,
             "Gogo": null,
-            "Umaro": null,
+            "Umaro": null
           }
-        }
-        var instances = M.Autocomplete.init(elems, options);
+        });
+        elems = document.querySelectorAll('.modal');
+        instances = M.Modal.init(elems, {});
       });
-
     </script>
 
   </body>

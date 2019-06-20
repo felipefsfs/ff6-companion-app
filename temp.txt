@@ -1,0 +1,111 @@
+      <button onSubmit={f} className="btn small waves-effect waves-light">Add
+        <i className="material-icons right">add_box</i>
+      </button>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.chips');
+        var instances = M.Chips.init(
+          elems, 
+          {
+            placeholder: 'Enter the XP!',
+            secondaryPlaceholder: '+XP',
+            limit:5,
+            onChipAdd(_, new_chip) {
+              new_chip.children[0].style.display = "none";
+            },
+            onChipSelect(_, selected_chip) {
+              console.log(selected_chip.innerText);
+            }
+          });
+        var instance = M.Chips.getInstance(elems[0]);
+        
+      });
+
+{
+            "Terra": null,
+            "Locke": null,
+            "Celes": null,
+            "Edgar": null,
+            "Sabin": null,
+            "Cyan": null,
+            "Shadow": null,
+            "Gau": null,
+            "Setzer": null,
+            "Strago": null,
+            "Relm": null,
+            "Mog": null,
+            "Gogo": null,
+            "Umaro": null
+}
+
+{
+            "Terra": [0,0],
+            "Locke": [1,0],
+            "Celes": [4,0],
+            "Edgar": [2,0],
+            "Sabin": [3,0],
+            "Cyan": [0,1],
+            "Shadow": [1,1],
+            "Gau": [2,1],
+            "Setzer": [3,1],
+            "Strago": [0,2],
+            "Relm": [1,2],
+            "Mog": [4,1],
+            "Gogo": [3,2],
+            "Umaro": [2,2]
+}
+
+
+function reactive({defaultValue = "I'm reactive now", verbose=false} = {}) {
+	let value = defaultValue;
+	const subscriptions = {};
+	return { 
+		setValue, 
+		getValue,
+		subscribe,
+		unsubscribe
+	};
+	function setValue(new_value) {
+		(verbose && console.log(`in setValue, setting value to ${new_value}`));
+		value = new_value;
+		broadcast();
+	}
+    	function getValue() {
+		(verbose && console.log(`in getValue, returning ${value}`));
+     		return value;
+	}
+	function subscribe({callback, identity, seqno = 0} = {}) {
+		(verbose && console.log(`in subscribe`));
+		const curr_size = subscriptions.size;
+		subscriptions.add(callback);	
+		return curr_size !== subscriptions.size;
+	}
+	function unsubscribe(callback) {
+		(verbose && console.log(`in unsubscribe`));
+		return subscriptions.remove(callback);
+	}
+	function broadcast() {
+		(verbose && console.log(`in broadcast`));
+		subscriptions.forEach(cb => cb(value));
+	}
+}
+
+
+    <Fragment>
+      <div class="divider"></div>
+      <div className="row" style={{"margin": "1vh 0px"}}>
+        <img ref={image} alt="Chars Map" src={port} className="hidden" />
+        {charAvatarMap(chars0, image)}
+      </div>
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+    </Fragment>
