@@ -3,6 +3,7 @@ import CharExpBar from "./CharExpBar";
 import CharForm from "./CharForm";
 import CanvasImg from "./CanvasImg";
 import {ActiveXPsContext} from "../store/xp_context";
+import useLocal from "../hooks/useLocal";
 
 export default forwardRef(CharAvatar);
 function CharAvatar(props, image_ref) {
@@ -12,11 +13,15 @@ function CharAvatar(props, image_ref) {
   const [alive, setAlive] = useState(true);
   const change_link = useRef(null);
   
-  useEffect(() => console.log("reading the indexDB"), []);
+  //useEffect(() => console.log("reading the indexDB"), []);
+  useLocal("avatarCharData" + props.id, [
+    [char, setChar],
+    [exp, setExp],
+    [alive, setAlive]]);
 
   useEffect(() => {
     if (alive && store.ping) {
-      setExp(exp + store.xp);
+      setExp(Number(exp) + Number(store.xp));
     }// eslint-disable-next-line
   },[store.xp, store.ping]);
 
@@ -34,12 +39,12 @@ function CharAvatar(props, image_ref) {
           width="100%"
           ref={image_ref}
           modalId={"id"+id} />
-        <div class="chip level z-depth-2">
-          <a  href={"#id"+id} class="modal-trigger waves-effect waves-blue" ref={change_link}>
+        <div className="chip level z-depth-2">
+          <a  href={"#id"+id} className="modal-trigger waves-effect waves-blue" ref={change_link}>
             Lvl {char_obj.level}
           </a>
         </div>
-        <div class="chip xp z-depth-2" onClick={handleClick}>
+        <div className="chip xp z-depth-2" onClick={handleClick}>
           XP: {char_obj.nextExp}
         </div>
       </div>
