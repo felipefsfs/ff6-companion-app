@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#E0F2F1" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -23,7 +23,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <title>React App</title>
+    <title>FF6 Esper XP Tracker</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -41,11 +41,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.autocomplete');
-        var options ={
-          limit: 3,
+        var instances = M.Autocomplete.init(elems, {
           data: {
             "Terra": null,
             "Locke": null,
@@ -60,12 +58,12 @@
             "Relm": null,
             "Mog": null,
             "Gogo": null,
-            "Umaro": null,
+            "Umaro": null
           }
-        }
-        var instances = M.Autocomplete.init(elems, options);
+        });
+        elems = document.querySelectorAll('.modal');
+        instances = M.Modal.init(elems, {});
       });
-
     </script>
 
   </body>

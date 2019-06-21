@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "server-rep"
+  },
+  "targets": {
+    "server-rep": {
+      "hosting": {
+        "ff6": [
+          "ff6tracker"
+        ]
+      }
+    }
+  }
+}

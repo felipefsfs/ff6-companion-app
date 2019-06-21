@@ -1,0 +1,34 @@
+{
+  "image_xy": {
+    "Terra": [0,0],
+    "Locke": [1,0],
+    "Celes": [4,0],
+    "Edgar": [2,0],
+    "Sabin": [3,0],
+    "Cyan": [0,1],
+    "Shadow": [1,1],
+    "Gau": [2,1],
+    "Setzer": [3,1],
+    "Strago": [0,2],
+    "Relm": [1,2],
+    "Mog": [4,1],
+    "Gogo": [3,2],
+    "Umaro": [2,2]
+  },
+  "list": {
+    "Terra": null,
+    "Locke": null,
+    "Celes": null,
+    "Edgar": null,
+    "Sabin": null,
+    "Cyan": null,
+    "Shadow": null,
+    "Gau": null,
+    "Setzer": null,
+    "Strago": null,
+    "Relm": null,
+    "Mog": null,
+    "Gogo": null,
+    "Umaro": null
+  }
+}

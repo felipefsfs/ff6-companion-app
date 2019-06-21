@@ -8,12 +8,12 @@ export default function XPForm() {
   
   return (
     <form onSubmit={submit}>
-      <div className="input-field"> 
+      <div className="input-field" style={{display: "inline-block", "marginRight": " 10px"}}> 
         <i className="material-icons prefix">videogame_asset</i>
         <input id="xp" type="number" className="validate" value={xp} onChange={changeXP} />
         <label htmlFor="xp">Enter combat XP!</label>
       </div>
-      <button className="btn small waves-effect waves-light" type="submit" name="action">Add
+      <button className="btn small waves-effect waves-light" type="submit" disabled={xp === ""} name="action">Add
         <i className="material-icons right">add_box</i>
       </button>
     </form>

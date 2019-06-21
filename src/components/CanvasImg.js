@@ -2,20 +2,20 @@ import React, { forwardRef, Fragment, useRef, useState, useEffect } from "react"
 
 export default forwardRef(CanvasImg);
 
-function CanvasImg(props, image_ref) {
+function CanvasImg({char, ...props}, image_ref) {
   const [imgUrl, setImgUrl] = useState("");
   const canvas = useRef(null);
-  const {callback, ...imgProps} = props;
-  useEffect(callback(image_ref)(canvas)(setImgUrl), [imgUrl]);
-
+  const {callback, modalId, ...imgProps} = props;
+  useEffect(callback({image: image_ref, canvas, setImgUrl}), [char]);
+  
   const canvasStyle = {
     display: "none"
   };
   
   return (
     <Fragment>
-      {imgUrl.length > 10 && <img alt="Canvas output" {...imgProps} src={imgUrl} />}
-      <canvas key={0} ref={canvas} width={38} height={38.5} style={canvasStyle}/>
+      {imgUrl.length > 10 && <img alt={char} {...imgProps} src={imgUrl}/>}
+      <canvas ref={canvas} width={38} height={38.5} style={canvasStyle}/>
     </Fragment>
   );
 }

@@ -1,0 +1,51 @@
+.avatar-pic {
+  position: relative;
+  height: 22vh;
+  cursor: pointer;
+}
+
+.avatar-pic:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: all .3s linear;
+  height: 22vh;
+}
+
+.avatar-pic.disabled:before {
+  background: rgba(125, 85, 85, 0.75);
+}
+.avatar-pic > img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.avatar-pic > .level {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background: rgba(99, 221, 230, 0.60);
+  text-shadow: 1px 1px 0px #CCC;
+}
+
+.avatar-pic > .xp {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background: rgba(99, 230, 127, 0.60);
+  text-shadow: 1px 1px 0px #CCC;
+}
+a 
+{ 
+  color: inherit; 
+  font-weight: bold;
+}
+
+strong {
+  font-size: large;
+}
