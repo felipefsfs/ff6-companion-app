@@ -8,7 +8,7 @@ export default function CharForm(props) {
 }
 function deadStatus(props) {
     return (
-        <div className="card-action">
+        <div key={"deadStatus"} className="card-action">
             <span className="switch right ">
                 <label>
                 Dead
@@ -23,7 +23,7 @@ function deadStatus(props) {
 
 function changeForm(props) {
     return (
-        <div className="card-reveal">
+        <div key={"changeForm"} className="card-reveal">
             <span className="card-title grey-text text-darken-4">{props.value}<i className="material-icons right">close</i></span>
             <form>
                 <div className="input-field">
