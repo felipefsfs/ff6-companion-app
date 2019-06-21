@@ -1,6 +1,9 @@
 # ff6-companion-app
 Companion App for FF6, any version. Tracks Exp, hit optimum Esper lvl Bonus.
 
+$npm run build
+$firebase deploy --onlyl hosting:[host]
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
