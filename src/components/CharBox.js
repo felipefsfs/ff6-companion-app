@@ -11,7 +11,6 @@ export default function CharBox(props) {
 
   return (
     <Fragment>
-      <div class="divider"></div>
       <div className="row" style={row_style}>
         <img ref={image} alt="Chars Map" src={port} className="hidden" />
         {charAvatarMap(chars0, image)}

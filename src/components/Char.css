@@ -29,14 +29,16 @@
   position: absolute;
   top: 5%;
   left: 5%;
-  background: rgba(99, 221, 230, 0.40);
+  background: rgba(99, 221, 230, 0.60);
+  text-shadow: 1px 1px 0px #CCC;
 }
 
 .avatar-pic > .xp {
   position: absolute;
   bottom: 5%;
   right: 5%;
-  background: rgba(99, 230, 127, 0.40);
+  background: rgba(99, 230, 127, 0.60);
+  text-shadow: 1px 1px 0px #CCC;
 }
 a 
 { 

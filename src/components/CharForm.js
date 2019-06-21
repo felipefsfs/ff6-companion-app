@@ -5,10 +5,9 @@ export default function CharForm({ modalId, charState: [char, setChar], aliveSta
   const xpRef = useRef(null);
   const closeRef = useRef(null);
 
-  console.log(alive);
   return (        
     <div id={modalId} className="modal modal-fixed-footer">
-      <form onSubmit={handleCharSubmit} autocomplete="off">
+      <form onSubmit={handleCharSubmit} autoComplete="off">
         <div className="modal-content">
           <span>
             <strong>{char}</strong>
@@ -23,7 +22,7 @@ export default function CharForm({ modalId, charState: [char, setChar], aliveSta
             <input ref={xpRef} type="number" id="exp" />
           </div>
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <div className="switch left" style={{"display": "inline-block"}}>
             <label>
               <input type="checkbox" onChange={handleAliveChange} checked={alive && "checked"}/>

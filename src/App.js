@@ -12,12 +12,11 @@ function App() {
     <div className="App container teal lighten-5">
       <XPProvider>
         <XPBox />
-        <div class="divider"></div>
+        <div className="divider"></div>
         <CharBox data={data} charData={char_data} />
       </XPProvider>
     </div>
   );
 }
-
 export default App;
 
